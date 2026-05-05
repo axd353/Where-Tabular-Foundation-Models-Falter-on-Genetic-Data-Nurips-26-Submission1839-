@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.pyo
+
+.venv/
+.env
+
+*.log
+wandb/
+wandb_logs/
+checkpoints/
+models/
+logs/
+
+# Generated GP/PRS-CSx data and model artifacts can be very large.
+*.pkl
+*.ckpt
+*.pt
+*.pth
+DataGeneration/output*/
+DataGeneration/generated*/
+InstructionTuneTabicl/data/
