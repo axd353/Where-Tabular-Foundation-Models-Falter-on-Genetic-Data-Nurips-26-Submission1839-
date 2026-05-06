@@ -72,3 +72,7 @@ bash run_gp_hpo.sh \
 If the TabICL checkpoint is not already cached from Hugging Face, add `--checkpoint-path /path/to/tabicl-classifier.ckpt`.
 
 See `InstructionTuneTabicl/test_train_dist_shift_exps/HPO_FLOW_GUIDE.md` for the detailed training and evaluation flow.
+
+## Downloadable archive
+
+A zipped snapshot of this repository is included as `paper1839-code.zip` for reviewers who prefer a single download instead of browsing files. It is generated from the latest commit via `git archive --format=zip --output=paper1839-code.zip HEAD`.
