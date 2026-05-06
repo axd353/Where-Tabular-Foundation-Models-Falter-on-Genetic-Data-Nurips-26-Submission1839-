@@ -1,2 +1,90 @@
--e ./InstructionTuneTabicl
-pandas
+# =============================================================================
+# Environment: /nfs/home/adas23/python_environments/tabpfn_latest/
+# Python: 3.9.10
+#
+# Full setup instructions
+# -----------------------
+# 1. Create the venv (skip if it already exists):
+#
+#        python3.9 -m venv /nfs/home/adas23/python_environments/tabpfn_latest
+#
+# 2. Activate it:
+#
+#        source /nfs/home/adas23/python_environments/tabpfn_latest/bin/activate
+#
+# 3. Upgrade pip and install PyTorch with CUDA 12.8 wheels FIRST
+#    (must be installed before the rest so that the bundled
+#    nvidia-*-cu12 wheels match torch 2.8.0):
+#
+#        python -m pip install --upgrade pip setuptools wheel
+#        python -m pip install \
+#            torch==2.8.0 \
+#            --index-url https://download.pytorch.org/whl/cu128
+#
+#    For a CPU-only install instead:
+#
+#        python -m pip install torch==2.8.0 \
+#            --index-url https://download.pytorch.org/whl/cpu
+#
+# 4. From the repo root (`code_for_paper/`):
+#
+#        python -m pip install -r requirements.txt
+#
+# 5. (Optional) Pre-cache the public TabICL classifier checkpoint so the
+#    HPO flow does not need internet at run time:
+#
+#        python -c "from huggingface_hub import hf_hub_download; \
+#                   hf_hub_download('jingang/TabICL-clf', \
+#                       'tabicl-classifier-v1-0208.ckpt')"
+#
+# Notes
+# -----
+# - `tabicl` itself is NOT installed via pip. The HPO scripts add
+#   `InstructionTuneTabicl/src` to `sys.path` automatically, so the copied
+#   `src/tabicl` package is imported in-place.
+# - All non-torch versions below are pinned to the exact versions present
+#   in the reference environment captured on 2026-05-05.
+# =============================================================================
+
+# --- Core scientific stack ---------------------------------------------------
+numpy==2.0.2
+scipy==1.13.1
+pandas==2.3.3
+scikit-learn==1.6.1
+joblib==1.5.2
+matplotlib==3.9.4
+
+# --- Deep learning -----------------------------------------------------------
+# torch is intentionally NOT pinned here; install it in step 3 above using
+# the PyTorch index so the correct CUDA/CPU build is selected.
+# Reference version used in this environment: torch==2.8.0 (CUDA 12.8 build).
+einops==0.8.1
+transformers==4.57.6
+tokenizers==0.22.2
+safetensors==0.7.0
+huggingface_hub==0.36.2
+hf-xet==1.2.0
+
+# --- Tabular foundation models ----------------------------------------------
+tabpfn==6.3.2
+tabpfn-common-utils==0.2.15
+xgboost==2.1.4
+
+# --- Experiment tracking / utils --------------------------------------------
+wandb==0.25.0
+tqdm==4.67.1
+psutil==7.1.3
+PyYAML==6.0.3
+filelock==3.19.1
+regex==2026.1.15
+
+# --- Jupyter / notebook visualisation ----------------------------------------
+ipykernel==6.31.0
+ipython==8.18.1
+jupyter_client==8.6.3
+jupyter_core==5.8.1
+
+# --- PDF / docx helpers used by paper-side scripts ---------------------------
+pdfplumber==0.11.8
+pdfminer.six==20251107
+python-docx==1.2.0

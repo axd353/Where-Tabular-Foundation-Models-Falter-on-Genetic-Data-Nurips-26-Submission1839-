@@ -9,17 +9,21 @@ The implementation files are copied from the working source trees without editin
 
 ## Environment
 
-Use the shared environment path requested for this submission:
+The reference environment lives at `/nfs/home/adas23/python_environments/tabpfn_latest/` (Python 3.9.10, PyTorch 2.8.0 + CUDA 12.8, TabPFN 6.3.2). Full step-by-step setup, including the exact `torch` install command and pinned package versions, is documented at the top of [requirements.txt](requirements.txt). The short version is:
 
 ```bash
-python3 -m venv /nfs/home/adas23/python_environments/tabpfn_latest
+python3.9 -m venv /nfs/home/adas23/python_environments/tabpfn_latest
 source /nfs/home/adas23/python_environments/tabpfn_latest/bin/activate
 python -m pip install --upgrade pip setuptools wheel
+
+# Install PyTorch first using the CUDA 12.8 wheels (or the CPU index).
+python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+
 cd code_for_paper
 python -m pip install -r requirements.txt
 ```
 
-If the environment already exists, start from the `source .../bin/activate` line and rerun the final install command from this repo root.
+If the environment already exists, just `source .../bin/activate` and rerun the final install command from this repo root. The `tabicl` package is imported directly from `InstructionTuneTabicl/src` via `sys.path` injection inside the scripts, so it does not need to be pip-installed.
 
 ## Data Generation
 
