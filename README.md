@@ -43,6 +43,13 @@ python test_train_dist_shift_mixed.py \
 
 Use `--resume` to continue an interrupted generation run. The output directory will contain `train_manifest.csv`, `eval_manifest.csv`, generated pickles, and `generation.log`.
 
+To customise the per-task simulation hyperparameters (population size `M`, number of clusters, ancestry-group structure, GP lengthscales, MAF ranges, etc.), edit the `sample_setting()` function in:
+
+- HGP tasks: [DataGeneration/test_train_dist_shift.py](DataGeneration/test_train_dist_shift.py)
+- PRS-CSx tasks: [DataGeneration/PRS-CSx/test_train_dist_shift_prs_csx.py](DataGeneration/PRS-CSx/test_train_dist_shift_prs_csx.py)
+
+The mixed orchestrator (`test_train_dist_shift_mixed.py`) calls into both files, so changes in either `sample_setting()` are automatically picked up by the mixed run.
+
 ## Instruction Tuning / HPO
 
 The HPO shell script keeps its original defaults, so pass explicit output directories when running from this clean repo:

@@ -16,9 +16,9 @@ PY_SCRIPT="${SCRIPT_DIR}/train_gp_hpo.py"
 # USER CONFIG
 # =============================================================================
 
-DATA_DIR="/lustre/isaac24/scratch/adas23/PostR01SubmissionFeb2026/test_train_dist_shift/data/PrsCsx_HGP_mixed/400_train_90_eval_tasks"
-CHECKPOINT_DIR="/lustre/isaac24/scratch/adas23/PostR01SubmissionFeb2026/test_train_dist_shift/models/hpo_runs"
-WANDB_DIR="/lustre/isaac24/scratch/adas23/PostR01SubmissionFeb2026/test_train_dist_shift/logs/hpo_runs"
+DATA_DIR="../SmalltaskSuite/"
+CHECKPOINT_DIR="../../Runs/Checkpoints/"
+WANDB_DIR="../Runs/Logs/"
 INIT_CHECKPOINT=""
 
 # ---- HPO search space -------------------------------------------------------

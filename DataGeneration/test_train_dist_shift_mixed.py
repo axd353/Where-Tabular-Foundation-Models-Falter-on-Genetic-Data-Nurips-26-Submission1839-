@@ -270,7 +270,7 @@ def generate_mixed_train_eval(
 
     Returns (train_manifest, eval_manifest) DataFrames.
     """
-    out_dir = Path(output_dir)
+    out_dir = Path(output_dir).expanduser().resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # ── logging to file and stdout ───────────────────────────────────

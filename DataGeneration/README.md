@@ -26,3 +26,12 @@ python test_train_dist_shift_mixed.py \
 ```
 
 Resume an interrupted run with the same command plus `--resume`.
+
+## Customising task settings
+
+Per-task simulation hyperparameters (population size `M`, number of clusters, ancestry-group structure, GP lengthscales, MAF ranges, PRS-CSx specific `phi`/`r_g`/`pi_causal`/`alpha`/`h`, etc.) are sampled inside `sample_setting()`. Edit:
+
+- HGP tasks: [test_train_dist_shift.py](test_train_dist_shift.py) → `sample_setting()`
+- PRS-CSx tasks: [PRS-CSx/test_train_dist_shift_prs_csx.py](PRS-CSx/test_train_dist_shift_prs_csx.py) → `sample_setting()`
+
+The mixed orchestrator imports both files, so editing either `sample_setting()` is sufficient to change the corresponding family in the mixed run.
